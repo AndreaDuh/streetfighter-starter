@@ -1,4 +1,5 @@
 $(document).ready(function(){
+        playGuile();
         $('.ryu').mouseenter(function(){
         $('.ryu-still').hide();
         $('.ryu-ready').show();
@@ -26,20 +27,20 @@ $(document).ready(function(){
     })
 });
 
-$('html').on('keydown', function(event) {
-        if (event.which == 88) {
-            playGuile();
-            $('.ryu-still').hide();
-            $('.ryu-ready').hide();
-            $('.ryu-cool').show();
-        }
-    })
-       .on('keyup', function(event) {
-        if (event.which == 88) {
-            $('.ryu-cool').hide();
-            $('.ryu-still').show();
-        }
-});
+$(document).keydown(function(e) {
+    if (e.keyCode == 88) {
+      $('.ryu-cool').show();
+      $('.ryu-ready').hide();
+      $('.ryu-still').hide();
+      $('.ryu-throwing').hide();
+    }
+  })
+$(document).keyup(function(e) {
+    if (e.keyCode == 88) {
+      $('.ryu-cool').hide();
+      $('.ryu-still').show();
+    }
+  });
 
 function playGuile() {
     $('#guile-theme')[0].volume = 0.5;
